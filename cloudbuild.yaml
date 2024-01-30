@@ -1,0 +1,20 @@
+  steps:
+  # Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/resonant-triode-408814/github_medideu_spring-petclinic:$COMMIT_SHA', '.']
+  # Push the container image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/resonant-triode-408814/github_medideu_spring-petclinic:$COMMIT_SHA']
+  # Deploy container image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+    - 'run'
+    - 'deploy'
+    - 'SERVICE-NAME'
+    - '--image'
+    - 'gcr.io/resonant-triode-408814/github_medideu_spring-petclinic:$COMMIT_SHA'
+    - '--region'
+    - 'REGION'
+  images:
+  - 'gcr.io/resonant-triode-408814/github_medideu_spring-petclinic:$COMMIT_SHA'
