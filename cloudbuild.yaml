@@ -1,6 +1,6 @@
   steps: 
   # Build the container image     
-  - name: 'gcr.io/cloud-builders/gcloud'
+  - name: 'gcr.io/cloud-builders/docker-compose'
     args: ['build', '-t', 'gcr.io/resonant-triode-408814/spring-petclinic:tag1', '.']
   images:
   - 'us-central1-docker.pkg.dev/resonant-triode-408814/spring-petclinic:tag1'
