@@ -1,9 +1,9 @@
-   steps:
+cli   steps:
    - name: 'gcr.io/cloud-builders/mvn' 
-    args: ['clean', 'package', 'com.google.cloud.tools:jib-maven-plugin:3.4.0:build', '-Dimage=gcr.io/resonant-triode-408814/run-sql', '-DskipTests']
+    args: ['clean', 'package', 'com.google.cloud.tools:jib-maven-plugin:3.4.0:build', '-Dimage=gcr.io/resonant-triode-408814/spring-petclinic', '-DskipTests']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/resonant-triode-408814/petclinic', '.','-f', 'Dockerfile']
+    args: ['build', '-t', 'gcr.io/resonant-triode-408814/spring-petclinic', '.','-f', 'Dockerfile']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/resonant-triode-408814/petclinic']
+    args: ['push', 'gcr.io/resonant-triode-408814/spring-petclinic']
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['run', 'deploy', 'petclinic', 'gcr.io/resonant-triode-408814/petclinic', 'managed', 'us-central1',  '8080','allow-unauthenticated']
+    args: ['run', 'deploy', 'spring-petclinic', 'gcr.io/resonant-triode-408814/spring-petclinic', 'managed', 'us-central1',  '8080','allow-unauthenticated']
