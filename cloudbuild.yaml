@@ -1,19 +1,3 @@
  steps:
   - name: 'gcr.io/cloud-builders/mvn' 
     args: ['clean', 'package', 'com.google.cloud.tools:jib-maven-plugin:3.4.0:build', '-Dimage=gcr.io/resonant-triode-408814/spring-petclinic', '-DskipTests']
-   # Push the container image to Container Registry
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/resonant-triode-408814/spring-petclinic']
-  # Deploy container image to Cloud Run
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: gcloud
-    args:
-    - 'run'
-    - 'deploy'
-    - 'spring-petclinic'
-    - '--image'
-    - 'gcr.io/resonant-triode-408814/spring-petclinic'
-    - '--region'
-    - 'us-central1'
- images:
-   - 'gcr.io/resonant-triode-408814/spring-petclinic'
