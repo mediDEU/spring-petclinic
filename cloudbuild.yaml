@@ -2,7 +2,7 @@
   # Build the container image  
   - name: 'gcr.io/cloud-builders/docker'
    script: 
-   docker build -t us-central1-docker.pkg.dev/resonant-triode-408814/spring-petclinic:tag1 .
-   automapSubstiutions: true
+      docker build -t us-central1-docker.pkg.dev/resonant-triode-408814/spring-petclinic:tag1 .
+    automapSubstiutions: true
   images:
   - 'us-central1-docker.pkg.dev/resonant-triode-408814/spring-petclinic:tag1'
