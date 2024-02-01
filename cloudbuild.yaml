@@ -1,5 +1,4 @@
 steps:
-  steps:
    - name: 'gcr.io/cloud-builders/mvn'
     args: ['clean', 'package', 'com.google.cloud.tools:jib-maven-plugin:3.4.0:build', '-Dimage=gcr.io/resonant-triode-408814/run-sql', '-DskipTests']
   - name: 'gcr.io/cloud-builders/docker'
