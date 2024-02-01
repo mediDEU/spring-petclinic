@@ -1,5 +1,5 @@
   steps:
-  # Build the container image 
+  # Build the container image  
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/resonant-triode-408814/spring-petclinic:tag1', '.']
   images:
