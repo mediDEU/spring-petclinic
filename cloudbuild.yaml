@@ -10,3 +10,4 @@
       - '--image=gcr.io/resonant-triode-408814/spring-petclinic'
       - '--platform=managed'
       - '--allow-unauthenticated'
+      - '--region=us-central1'
