@@ -2,3 +2,11 @@
   - name: 'gcr.io/cloud-builders/mvn' 
     args: ['clean', 'package', 'com.google.cloud.tools:jib-maven-plugin:3.4.0:build', '-Dimage=gcr.io/resonant-triode-408814/spring-petclinic', '-DskipTests']
 
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'spring-petclinic'
+      - '--image=gcr.io/resonant-triode-408814/spring-petclinic'
+      - '--platform=managed'
+      - '--allow-unauthenticated'
